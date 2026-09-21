@@ -21,11 +21,11 @@
 - [x] Process / Thread / IPC demonstrations on Ubuntu
 
 ## Week 6 — Synchronization, CPU and Memory
-- [ ] Synchronization
-- [ ] Race condition and critical section
-- [ ] Mutex and semaphore
-- [ ] Condition variable
-- [ ] Deadlock
+- [x] Synchronization
+- [x] Race condition and critical section
+- [x] Mutex and semaphore
+- [x] Condition variable
+- [x] Deadlock
 - [x] CPU architecture and performance
 - [x] CPU cache
 - [x] SIMD and CPU affinity
