@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
@@ -16,11 +17,9 @@ typedef struct {
     long long end;
 } ThreadArgs;
 
-
 void* sum_array(void* arg)
 {
     ThreadArgs* args = (ThreadArgs*)arg;
-
     cpu_set_t cpuset;
 
     CPU_ZERO(&cpuset);
@@ -32,66 +31,41 @@ void* sum_array(void* arg)
         &cpuset
     );
 
-
     long long sum = 0;
-
     for(long long i = args->start; i < args->end; i++)
-    {
         sum += data[i];
-    }
 
-
-    printf(
-        "Thread %d running on CPU %d, partial sum = %lld\n",
-        args->id,
-        sched_getcpu(),
-        sum
-    );
-
+    printf("Thread %d running on CPU %d, sum = %lld\n",
+           args->id, sched_getcpu(), sum);
 
     return NULL;
 }
 
-
 double get_time()
 {
     struct timespec ts;
-
-    clock_gettime(
-        CLOCK_MONOTONIC,
-        &ts
-    );
-
+    clock_gettime(CLOCK_MONOTONIC, &ts);
     return ts.tv_sec + ts.tv_nsec / 1e9;
 }
 
-
 int main()
 {
-    printf(
-        "Available CPU cores: %ld\n",
-        sysconf(_SC_NPROCESSORS_ONLN)
-    );
-
+    printf("Available CPU cores: %ld\n",
+           sysconf(_SC_NPROCESSORS_ONLN));
 
     for(long long i = 0; i < SIZE; i++)
         data[i] = 1;
 
-
-
     pthread_t threads[NUM_THREADS];
     ThreadArgs args[NUM_THREADS];
 
-
     double start = get_time();
-
 
     for(int i = 0; i < NUM_THREADS; i++)
     {
         args[i].id = i;
         args[i].start = i * (SIZE / NUM_THREADS);
-        args[i].end = (i+1)*(SIZE / NUM_THREADS);
-
+        args[i].end = (i + 1) * (SIZE / NUM_THREADS);
 
         pthread_create(
             &threads[i],
@@ -101,22 +75,12 @@ int main()
         );
     }
 
-
     for(int i = 0; i < NUM_THREADS; i++)
-    {
-        pthread_join(
-            threads[i],
-            NULL
-        );
-    }
-
+        pthread_join(threads[i], NULL);
 
     double end = get_time();
 
-
-    printf("\nExecution time: %.6f seconds\n",
-            end-start);
-
+    printf("Execution time: %.6f seconds\n", end - start);
 
     return 0;
 }
