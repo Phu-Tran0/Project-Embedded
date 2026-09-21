@@ -26,9 +26,9 @@
 - [ ] Mutex and semaphore
 - [ ] Condition variable
 - [ ] Deadlock
-- [ ] CPU architecture and performance
-- [ ] CPU cache
-- [ ] SIMD and CPU affinity
+- [x] CPU architecture and performance
+- [x] CPU cache
+- [x] SIMD and CPU affinity
 - [ ] Memory management
 
 ## Week 7 — To Be Determined
