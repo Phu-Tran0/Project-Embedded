@@ -29,8 +29,8 @@
 - [x] CPU architecture and performance
 - [x] CPU cache
 - [x] SIMD and CPU affinity
-- [ ] Memory management
 
 ## Week 7 — To Be Determined
+- [ ] Memory management
 - [ ] Continue the selected project topics
 - [ ] Further implementation and experimentation
