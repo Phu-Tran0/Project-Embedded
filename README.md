@@ -1,36 +1,321 @@
-# Project Progress
+# Linux User-Space Application Programming
 
-## Week 3 — Initial Study
-- [x] Project overview
-- [x] Linux and Ubuntu environment
-- [x] Basic project requirements and direction
+> Embedded System Project Report — Linux system programming in user space
 
-## Week 4 — Preparation and Study
-- [x] Linux System Programming
-- [x] Study Process, Thread and IPC concepts
-- [x] Prepare the Ubuntu development environment
-- [x] Plan the implementation and demonstration flow
+## Overview
 
-## Week 5 — Process, Thread and IPC
-- [x] Process and process management
-- [x] Thread and multi-thread programming
-- [x] Inter-Process Communication (IPC)
-  - [x] Local IPC
-  - [x] Shared IPC
-  - [x] Network IPC
-- [x] Process / Thread / IPC demonstrations on Ubuntu
+This project studies fundamental **Linux User-Space Application Programming** concepts through both theoretical analysis and practical implementation.
 
-## Week 6 — Synchronization, CPU and Memory
-- [x] Synchronization
-- [x] Race condition and critical section
-- [x] Mutex and semaphore
-- [x] Condition variable
-- [x] Deadlock
-- [x] CPU architecture and performance
-- [x] CPU cache
-- [x] SIMD and CPU affinity
+The report focuses on process and thread management, inter-process communication (IPC), synchronization, CPU performance, and memory management. The practical demonstrations are implemented in **C/C++ on Ubuntu Linux** so that the theoretical concepts can be observed directly through program execution.
 
-## Week 7 — To Be Determined
-- [ ] Memory management
-- [ ] Continue the selected project topics
-- [ ] Further implementation and experimentation
+## Main Topics
+
+### 1. Process & Thread Management
+
+The report covers:
+
+- Process and Thread
+- User Space and Kernel Space
+- Context Switching
+- Process Memory Layout
+- `fork()`
+- `exec()`
+- `wait()` / `waitpid()`
+- POSIX Threads
+- `pthread_create()`
+- `pthread_join()`
+
+A representative execution flow is:
+
+```text
+pthread_create()
+      ↓
+pthread_join()
+      ↓
+fork()
+      ↓
+exec()
+      ↓
+wait()
+```
+
+### 2. Inter-Process Communication (IPC)
+
+IPC is divided into three main groups.
+
+#### Local IPC
+
+- Signal
+- Pipe
+- FIFO / Named Pipe
+- Message Queue
+- Unix Domain Socket
+
+#### Shared IPC
+
+- System V Shared Memory
+- Memory Mapping (`mmap()`)
+
+#### Network IPC
+
+- TCP Socket
+- UDP Socket
+
+The report also introduces higher-level communication technologies such as:
+
+- ZeroMQ
+- gRPC
+- HTTP/REST
+- MQTT
+
+### 3. Synchronization
+
+The project studies the problems and mechanisms involved in concurrent programming:
+
+- Race Condition
+- Critical Section
+- Mutex
+- Semaphore
+- Condition Variable
+- Deadlock
+- Coffman conditions
+
+Practical demonstrations include:
+
+- Mutex-protected counter
+- Producer–Consumer using Condition Variable
+- Counting Semaphore
+- Reader–Writer synchronization
+- Intentional Deadlock demonstration
+
+### 4. CPU Architecture & Performance
+
+Topics include:
+
+- Multi-core CPU
+- Physical and logical processors
+- Context Switching
+- CPU Affinity
+- L1 / L2 / L3 Cache
+- Cache Hit / Cache Miss
+- Temporal and Spatial Locality
+- Memory Bandwidth
+- SIMD
+- Vectorization
+- NUMA
+
+Two practical experiments are used:
+
+1. **CPU Affinity** — assigning threads to selected CPU cores.
+2. **Cache Locality** — comparing sequential and random memory access.
+
+### 5. Memory Management
+
+The report covers:
+
+- Virtual Memory
+- Physical Memory
+- Virtual and Physical Addresses
+- Page Table
+- Page Fault
+- Swap
+- Process Memory Layout
+- Memory Mapping
+- Shared Memory
+- Copy-on-Write
+- Memory Reuse
+- Memory Pool
+- Zero-Copy
+
+Basic process memory layout:
+
+```text
+High Address
+┌──────────────┐
+│    Stack     │
+├──────────────┤
+│     Heap     │
+├──────────────┤
+│ Data Segment │
+├──────────────┤
+│ Code Segment │
+└──────────────┘
+Low Address
+```
+
+## Practical Implementation
+
+The demonstrations are developed on Ubuntu Linux using C/C++.
+
+### Compilation
+
+C:
+
+```bash
+gcc <source_file>.c -o <output_file> -O2
+./<output_file>
+```
+
+C++:
+
+```bash
+g++ <source_file>.cpp -o <output_file> -O2
+./<output_file>
+```
+
+POSIX Threads:
+
+```bash
+gcc <source_file>.c -o <output_file> -pthread -O2
+./<output_file>
+```
+
+## Demonstration Programs
+
+| Area | Demonstration |
+|---|---|
+| Process / Thread | `pthread_create()`, `pthread_join()`, `fork()`, `exec()`, `wait()` |
+| Local IPC | Signal, Pipe, FIFO, Message Queue |
+| Shared IPC | Shared Memory, `mmap()` |
+| Network IPC | TCP Client/Server, UDP Client/Server |
+| Synchronization | Mutex, Condition Variable, Semaphore, RW Lock |
+| Deadlock | Two-thread circular resource waiting |
+| CPU Performance | CPU Affinity |
+| Memory Performance | Cache Locality |
+
+## Example Results
+
+### Process & Thread
+
+```text
+Main Process
+    │
+    ├── Create Thread
+    │       ↓
+    │   Thread executes
+    │       ↓
+    │   pthread_join()
+    │
+    ├── fork()
+    │     ├── Parent → wait()
+    │     └── Child  → exec("ls -l")
+    │
+    └── Finish
+```
+
+### IPC
+
+The local IPC demonstration exchanges data using:
+
+```text
+Signal → Pipe → FIFO → Message Queue
+```
+
+Shared IPC demonstrates:
+
+```text
+System V Shared Memory
+        +
+      mmap()
+```
+
+Network IPC demonstrates:
+
+```text
+TCP: Client ←── connection ──→ Server
+UDP: Client ── datagram ──→ Server
+```
+
+### Synchronization
+
+```text
+Mutex
+Condition Variable
+Semaphore
+Reader-Writer Lock
+        +
+    Deadlock Demo
+```
+
+### CPU and Cache
+
+CPU Affinity assigns threads to selected cores and measures execution time.
+
+Cache Locality compares:
+
+```text
+Sequential Access → better locality
+Random Access     → poorer locality
+```
+
+## Suggested Repository Structure
+
+```text
+linux-user-space-programming/
+│
+├── README.md
+│
+├── process_thread/
+│   └── process_thread_demo.c
+│
+├── ipc/
+│   ├── local_ipc_demo.c
+│   ├── shared_ipc_demo.c
+│   └── network_ipc_demo/
+│       ├── tcp_server.c
+│       ├── tcp_client.c
+│       ├── udp_server.c
+│       └── udp_client.c
+│
+├── synchronization/
+│   ├── synchronization.cpp
+│   └── deadlock.cpp
+│
+├── cpu/
+│   ├── cpu_affinity.c
+│   └── cache_locality.c
+│
+└── report/
+    └── Linux_User_Space_Application_Programming.pdf
+```
+
+## Learning Objectives
+
+- Understand the execution model of Linux applications.
+- Understand User Space and Kernel Space.
+- Practice process and thread management.
+- Implement IPC mechanisms.
+- Identify Race Conditions and Critical Sections.
+- Apply synchronization mechanisms.
+- Understand how Deadlock occurs.
+- Explore CPU architecture and performance factors.
+- Understand Linux Virtual Memory and Process Memory Layout.
+- Observe CPU affinity and cache locality in practice.
+
+## Environment
+
+| Component | Environment |
+|---|---|
+| Operating System | Ubuntu Linux |
+| Programming Languages | C / C++ |
+| Compiler | GCC / G++ |
+| Thread Library | POSIX Threads |
+| Focus | Linux User-Space Programming |
+
+## Report Organization
+
+The report is organized into five chapters:
+
+1. **Introduction** — background, problem statement, objectives, scope, and report organization.
+2. **Technical Background** — Process, Thread, IPC, Synchronization, CPU Architecture, Performance, and Memory Management.
+3. **Implementation** — practical C/C++ programs and execution.
+4. **Results and Discussion** — observed experimental results.
+5. **Conclusion** — summary, limitations, and future development.
+
+## Purpose
+
+The project connects **Linux system-level theory with practical programming**.
+
+Instead of studying Process, Thread, IPC, Synchronization, CPU, and Memory Management only conceptually, representative programs are implemented and their behavior is observed directly in Ubuntu Linux.
+
+This provides a foundation for further work with **embedded Linux and system-level applications**.
