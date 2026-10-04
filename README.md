@@ -109,40 +109,6 @@ Two practical experiments are used:
 1. **CPU Affinity** — assigning threads to selected CPU cores.
 2. **Cache Locality** — comparing sequential and random memory access.
 
-### 5. Memory Management
-
-The report covers:
-
-- Virtual Memory
-- Physical Memory
-- Virtual and Physical Addresses
-- Page Table
-- Page Fault
-- Swap
-- Process Memory Layout
-- Memory Mapping
-- Shared Memory
-- Copy-on-Write
-- Memory Reuse
-- Memory Pool
-- Zero-Copy
-
-Basic process memory layout:
-
-```text
-High Address
-┌──────────────┐
-│    Stack     │
-├──────────────┤
-│     Heap     │
-├──────────────┤
-│ Data Segment │
-├──────────────┤
-│ Code Segment │
-└──────────────┘
-Low Address
-```
-
 ## Practical Implementation
 
 The demonstrations are developed on Ubuntu Linux using C/C++.
@@ -248,36 +214,6 @@ Sequential Access → better locality
 Random Access     → poorer locality
 ```
 
-## Suggested Repository Structure
-
-```text
-linux-user-space-programming/
-│
-├── README.md
-│
-├── process_thread/
-│   └── process_thread_demo.c
-│
-├── ipc/
-│   ├── local_ipc_demo.c
-│   ├── shared_ipc_demo.c
-│   └── network_ipc_demo/
-│       ├── tcp_server.c
-│       ├── tcp_client.c
-│       ├── udp_server.c
-│       └── udp_client.c
-│
-├── synchronization/
-│   ├── synchronization.cpp
-│   └── deadlock.cpp
-│
-├── cpu/
-│   ├── cpu_affinity.c
-│   └── cache_locality.c
-│
-└── report/
-    └── Linux_User_Space_Application_Programming.pdf
-```
 
 ## Learning Objectives
 
@@ -307,7 +243,7 @@ linux-user-space-programming/
 The report is organized into five chapters:
 
 1. **Introduction** — background, problem statement, objectives, scope, and report organization.
-2. **Technical Background** — Process, Thread, IPC, Synchronization, CPU Architecture, Performance, and Memory Management.
+2. **Technical Background** — Process, Thread, IPC, Synchronization, CPU Architecture,  and Performance.
 3. **Implementation** — practical C/C++ programs and execution.
 4. **Results and Discussion** — observed experimental results.
 5. **Conclusion** — summary, limitations, and future development.
