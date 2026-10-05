@@ -1,23 +1,22 @@
 # Linux User-Space Application Programming
 
-> Embedded System Project Report — Linux system programming in user space
+> Embedded System Project — Linux system programming in user space
 
 ## Overview
 
-This project studies fundamental **Linux User-Space Application Programming** concepts through both theoretical analysis and practical implementation.
+This project studies fundamental **Linux User-Space Application Programming** concepts through theoretical analysis and practical implementation.
 
-The report focuses on process and thread management, inter-process communication (IPC), synchronization, CPU performance, and memory management. The practical demonstrations are implemented in **C/C++ on Ubuntu Linux** so that the theoretical concepts can be observed directly through program execution.
+The project focuses on process and thread management, inter-process communication (IPC), synchronization, CPU architecture, and performance. The practical demonstrations are implemented in **C/C++ on Ubuntu Linux** so that the theoretical concepts can be observed directly through program execution.
 
 ## Main Topics
 
 ### 1. Process & Thread Management
 
-The report covers:
+The project covers:
 
 - Process and Thread
 - User Space and Kernel Space
 - Context Switching
-- Process Memory Layout
 - `fork()`
 - `exec()`
 - `wait()` / `waitpid()`
@@ -61,7 +60,7 @@ IPC is divided into three main groups.
 - TCP Socket
 - UDP Socket
 
-The report also introduces higher-level communication technologies such as:
+The project also introduces higher-level communication technologies such as:
 
 - ZeroMQ
 - gRPC
@@ -78,7 +77,7 @@ The project studies the problems and mechanisms involved in concurrent programmi
 - Semaphore
 - Condition Variable
 - Deadlock
-- Coffman conditions
+- Coffman Conditions
 
 Practical demonstrations include:
 
@@ -93,7 +92,7 @@ Practical demonstrations include:
 Topics include:
 
 - Multi-core CPU
-- Physical and logical processors
+- Physical and Logical Processors
 - Context Switching
 - CPU Affinity
 - L1 / L2 / L3 Cache
@@ -104,10 +103,10 @@ Topics include:
 - Vectorization
 - NUMA
 
-Two practical experiments are used:
+Two practical experiments are implemented:
 
 1. **CPU Affinity** — assigning threads to selected CPU cores.
-2. **Cache Locality** — comparing sequential and random memory access.
+2. **Cache Locality** — comparing sequential and pseudo-random memory access.
 
 ## Practical Implementation
 
@@ -115,21 +114,21 @@ The demonstrations are developed on Ubuntu Linux using C/C++.
 
 ### Compilation
 
-C:
+#### C
 
 ```bash
 gcc <source_file>.c -o <output_file> -O2
 ./<output_file>
 ```
 
-C++:
+#### C++
 
 ```bash
 g++ <source_file>.cpp -o <output_file> -O2
 ./<output_file>
 ```
 
-POSIX Threads:
+#### POSIX Threads
 
 ```bash
 gcc <source_file>.c -o <output_file> -pthread -O2
@@ -146,8 +145,7 @@ gcc <source_file>.c -o <output_file> -pthread -O2
 | Network IPC | TCP Client/Server, UDP Client/Server |
 | Synchronization | Mutex, Condition Variable, Semaphore, RW Lock |
 | Deadlock | Two-thread circular resource waiting |
-| CPU Performance | CPU Affinity |
-| Memory Performance | Cache Locality |
+| CPU Performance | CPU Affinity, Cache Locality |
 
 ## Example Results
 
@@ -171,7 +169,7 @@ Main Process
 
 ### IPC
 
-The local IPC demonstration exchanges data using:
+The Local IPC demonstration exchanges information using:
 
 ```text
 Signal → Pipe → FIFO → Message Queue
@@ -203,17 +201,16 @@ Reader-Writer Lock
     Deadlock Demo
 ```
 
-### CPU and Cache
+### CPU Performance
 
-CPU Affinity assigns threads to selected cores and measures execution time.
+CPU Affinity assigns threads to selected CPU cores and measures execution time.
 
 Cache Locality compares:
 
 ```text
-Sequential Access → better locality
-Random Access     → poorer locality
+Sequential Access    → better locality
+Pseudo-Random Access → poorer locality
 ```
-
 
 ## Learning Objectives
 
@@ -225,7 +222,6 @@ Random Access     → poorer locality
 - Apply synchronization mechanisms.
 - Understand how Deadlock occurs.
 - Explore CPU architecture and performance factors.
-- Understand Linux Virtual Memory and Process Memory Layout.
 - Observe CPU affinity and cache locality in practice.
 
 ## Environment
@@ -243,15 +239,15 @@ Random Access     → poorer locality
 The report is organized into five chapters:
 
 1. **Introduction** — background, problem statement, objectives, scope, and report organization.
-2. **Technical Background** — Process, Thread, IPC, Synchronization, CPU Architecture,  and Performance.
+2. **Technical Background** — Process, Thread, IPC, Synchronization, CPU Architecture, and Performance.
 3. **Implementation** — practical C/C++ programs and execution.
 4. **Results and Discussion** — observed experimental results.
-5. **Conclusion** — summary, limitations, and future development.
+5. **Conclusion** — summary and conclusions.
 
 ## Purpose
 
 The project connects **Linux system-level theory with practical programming**.
 
-Instead of studying Process, Thread, IPC, Synchronization, CPU, and Memory Management only conceptually, representative programs are implemented and their behavior is observed directly in Ubuntu Linux.
+Instead of studying Process, Thread, IPC, Synchronization, CPU Architecture, and Performance only conceptually, representative programs are implemented and their behavior is observed directly in Ubuntu Linux.
 
 This provides a foundation for further work with **embedded Linux and system-level applications**.
