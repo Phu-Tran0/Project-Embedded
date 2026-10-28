@@ -253,7 +253,7 @@ Instead of studying Process, Thread, IPC, Synchronization, CPU Architecture, and
 This provides a foundation for further work with **embedded Linux and system-level applications**.
 
 ## References
-[1] Bryant, R.E. and O'Hallaron, D.R. (2015) Computer Systems: A Programmer's Perspective. 3rd edn. Pearson.
+1 Bryant, R.E. and O'Hallaron, D.R. (2015) Computer Systems: A Programmer's Perspective. 3rd edn. Pearson.
 [2] Hallinan, C. (2010) Embedded Linux Primer: A Practical Real-World Approach. 2nd edn. Pearson.
 [3] Kerrisk, M. (2010) The Linux Programming Interface: A Linux and UNIX System Programming Handbook. No Starch Press.
 [4] Stevens, W.R., Fenner, B. and Rudoff, A.M. (2003) UNIX Network Programming, Volume 1: The Sockets Networking API. 3rd edn. Addison-Wesley Professional.
