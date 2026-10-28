@@ -147,6 +147,10 @@ gcc <source_file>.c -o <output_file> -pthread -O2
 | Deadlock | Two-thread circular resource waiting |
 | CPU Performance | CPU Affinity, Cache Locality |
 
+## Demo Video
+
+[Watch the implementation demonstration on YouTube](https://youtu.be/9DqJFuEn9CM)
+
 ## Example Results
 
 ### Process & Thread
