@@ -251,3 +251,12 @@ The project connects **Linux system-level theory with practical programming**.
 Instead of studying Process, Thread, IPC, Synchronization, CPU Architecture, and Performance only conceptually, representative programs are implemented and their behavior is observed directly in Ubuntu Linux.
 
 This provides a foundation for further work with **embedded Linux and system-level applications**.
+
+## References
+[1] Bryant, R.E. and O'Hallaron, D.R. (2015) Computer Systems: A Programmer's Perspective. 3rd edn. Pearson.
+[2] Hallinan, C. (2010) Embedded Linux Primer: A Practical Real-World Approach. 2nd edn. Pearson.
+[3] Kerrisk, M. (2010) The Linux Programming Interface: A Linux and UNIX System Programming Handbook. No Starch Press.
+[4] Stevens, W.R., Fenner, B. and Rudoff, A.M. (2003) UNIX Network Programming, Volume 1: The Sockets Networking API. 3rd edn. Addison-Wesley Professional.
+[5] Vasquez, F. and Simmonds, C. (2021) Mastering Embedded Linux Programming. 3rd edn. Packt Publishing.
+[6] Williams, A. (2019) C++ Concurrency in Action. 2nd edn. Manning Publications.
+[7] Yaghmour, K., Masters, J., Ben-Yossef, G. and Gerum, P. (2008) Building Embedded Linux Systems. 2nd edn. O'Reilly Media.
